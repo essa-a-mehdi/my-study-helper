@@ -1,9 +1,11 @@
 import { useParams } from 'react-router-dom';
+import { useNavigate }  from 'react-router-dom';
 import { courses } from '../data/courseData';
 
 export default function CoursePage() {
     const { courseId } = useParams();
     const course = courses[courseId];
+    const navigate = useNavigate();
 
     if (!course) {
         return (
@@ -22,6 +24,7 @@ export default function CoursePage() {
             <p>Lectures: {course.lectures}</p>
             <p>Assignments: {course.assignments}</p>
             <p>Exams: {course.exams}</p>
+            <button onClick={() => navigate('/')}>Back to Dashboard</button>
         </div>
     )
 }
